@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Football Tournament Registration</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="logo">⚽</span>
+      <div>
+        <h1>Football Tournament</h1>
+        <p class="subtitle">Team Registration Portal</p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="stats-bar">
+      <div class="stat"><span class="stat-num" id="statTeams">—</span><span class="stat-label">Teams Registered</span></div>
+      <div class="stat"><span class="stat-num" id="statSlots">—</span><span class="stat-label">Spots Remaining</span></div>
+      <div class="stat"><span class="stat-num" id="statPlayers">—</span><span class="stat-label">Total Players</span></div>
+      <div class="stat"><span class="stat-num" id="statReady">—</span><span class="stat-label">Teams Ready</span></div>
+    </section>
+    <nav class="tabs">
+      <button class="tab active" data-tab="register">Register a Team</button>
+      <button class="tab" data-tab="teams">Browse Teams</button>
+    </nav>
+    <section id="tab-register" class="tab-content active">
+      <div class="card">
+        <h2>Register Your Team</h2>
+        <form id="registerForm" novalidate>
+          <div class="form-group">
+            <label for="teamName">Team Name <span class="req">*</span></label>
+            <input id="teamName" type="text" placeholder="e.g. Thunder FC" maxlength="50" required />
+          </div>
+          <div class="form-group">
+            <label for="captainName">Captain's Full Name <span class="req">*</span></label>
+            <input id="captainName" type="text" placeholder="e.g. John Smith" maxlength="60" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="captainEmail">Email <span class="req">*</span></label>
+              <input id="captainEmail" type="email" placeholder="captain@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="captainPhone">Phone <span class="req">*</span></label>
+              <input id="captainPhone" type="tel" placeholder="+1 555 000 0000" required />
+            </div>
+          </div>
+          <p class="hint">After registering your team you can add players from the Browse Teams tab.</p>
+          <div id="registerError" class="error-msg hidden"></div>
+          <button type="submit" class="btn btn-primary" id="registerBtn">Register Team</button>
+        </form>
+      </div>
+    </section>
+    <section id="tab-teams" class="tab-content hidden">
+      <div id="teamsGrid" class="teams-grid">
+        <p class="empty-state">Loading teams…</p>
+      </div>
+    </section>
+  </main>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>
